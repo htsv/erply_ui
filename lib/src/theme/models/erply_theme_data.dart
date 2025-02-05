@@ -49,8 +49,7 @@ class ErplyThemeData {
   /// Create light theme
   ThemeData createLightTheme() {
     // Create a typography config with light theme colors
-    _lightTypographyConfig =
-        ErplyTypographyConfig.generateWithTwoColorsAndFontFamily(
+    _lightTypographyConfig = ErplyTypographyConfig.generate(
       displayFontFamily: typographyConfig.fontFamily,
       bodyFontFamily: typographyConfig.fontFamily,
       displayColor: lightColorConfig.displayText,
@@ -67,8 +66,7 @@ class ErplyThemeData {
   /// Create dark theme
   ThemeData createDarkTheme() {
     // Create a typography config with dark theme colors
-    _darkTypographyConfig =
-        ErplyTypographyConfig.generateWithTwoColorsAndFontFamily(
+    _darkTypographyConfig = ErplyTypographyConfig.generate(
       displayFontFamily: typographyConfig.fontFamily,
       bodyFontFamily: typographyConfig.fontFamily,
       displayColor: darkColorConfig.displayText,

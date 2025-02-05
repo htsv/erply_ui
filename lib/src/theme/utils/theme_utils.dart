@@ -26,7 +26,7 @@ class ErplyThemeUtils {
   ) {
     final scaleFactor = calculateTypographyScaleFactor(context);
 
-    return ErplyTypographyConfig.generateWithTwoColorsAndFontFamily(
+    return ErplyTypographyConfig.generate(
       scaleFactor: scaleFactor,
       displayColor: originalConfig.displayLarge.color,
       bodyColor: originalConfig.bodyLarge.color,

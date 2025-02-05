@@ -171,8 +171,8 @@ class ErplyTypographyConfig {
               letterSpacing: 1.5,
             );
 
-  /// Get ErplyTypographyConfig for a  given baseColor and scaleFactor
-  static ErplyTypographyConfig generateWithTwoColorsAndFontFamily({
+  // Generate a new typography configuration
+  static ErplyTypographyConfig generate({
     Color? displayColor,
     Color? bodyColor,
     String? displayFontFamily,
@@ -303,111 +303,6 @@ class ErplyTypographyConfig {
     );
   }
 
-  /// Generate a new typography configuration
-  static ErplyTypographyConfig generate({
-    String? fontFamily,
-    Color? baseColor,
-    double scaleFactor = 1.0,
-  }) {
-    return ErplyTypographyConfig(
-      fontFamily: fontFamily,
-      displayLarge: ErplyFontConfig(
-        fontFamily: fontFamily ?? defaultFontFamily,
-        fontSize: 32 * scaleFactor,
-        fontWeight: FontWeight.bold,
-        // color: baseColor ?? defaultColor,
-        letterSpacing: -0.5,
-      ),
-      displayMedium: ErplyFontConfig(
-        fontFamily: fontFamily ?? defaultFontFamily,
-        fontSize: 28 * scaleFactor,
-        fontWeight: FontWeight.w600,
-        // color: baseColor ?? defaultColor,
-        letterSpacing: -0.25,
-      ),
-      displaySmall: ErplyFontConfig(
-        fontFamily: fontFamily ?? defaultFontFamily,
-        fontSize: 24 * scaleFactor,
-        fontWeight: FontWeight.w500,
-        // color: baseColor ?? defaultColor,
-      ),
-      headlineLarge: ErplyFontConfig(
-        fontFamily: fontFamily ?? defaultFontFamily,
-        fontSize: 22 * scaleFactor,
-        fontWeight: FontWeight.w600,
-        // color: baseColor ?? defaultColor,
-      ),
-      headlineMedium: ErplyFontConfig(
-        fontFamily: fontFamily ?? defaultFontFamily,
-        fontSize: 20 * scaleFactor,
-        fontWeight: FontWeight.w500,
-        // color: baseColor ?? defaultColor,
-      ),
-      headlineSmall: ErplyFontConfig(
-        fontFamily: fontFamily ?? defaultFontFamily,
-        fontSize: 18 * scaleFactor,
-        fontWeight: FontWeight.w500,
-        // color: baseColor ?? defaultColor,
-      ),
-      bodyLarge: ErplyFontConfig(
-        fontFamily: fontFamily ?? defaultFontFamily,
-        fontSize: 16 * scaleFactor,
-        fontWeight: FontWeight.w400,
-        // color: baseColor ?? defaultColor,
-        height: 1.5,
-      ),
-      bodyMedium: ErplyFontConfig(
-        fontFamily: fontFamily ?? defaultFontFamily,
-        fontSize: 14 * scaleFactor,
-        fontWeight: FontWeight.w400,
-        // color: baseColor ?? defaultColor,
-        height: 1.5,
-      ),
-      bodySmall: ErplyFontConfig(
-        fontFamily: fontFamily ?? defaultFontFamily,
-        fontSize: 12 * scaleFactor,
-        fontWeight: FontWeight.w400,
-        // color: baseColor ?? defaultColor,
-        height: 1.5,
-      ),
-      labelLarge: ErplyFontConfig(
-        fontFamily: fontFamily ?? defaultFontFamily,
-        fontSize: 14 * scaleFactor,
-        fontWeight: FontWeight.w500,
-        // color: baseColor ?? defaultColor,
-        letterSpacing: 0.1,
-      ),
-      labelMedium: ErplyFontConfig(
-        fontFamily: fontFamily ?? defaultFontFamily,
-        fontSize: 12 * scaleFactor,
-        fontWeight: FontWeight.w500,
-        // color: baseColor ?? defaultColor,
-        letterSpacing: 0.5,
-      ),
-      labelSmall: ErplyFontConfig(
-        fontFamily: fontFamily ?? defaultFontFamily,
-        fontSize: 10 * scaleFactor,
-        fontWeight: FontWeight.w500,
-        // color: baseColor ?? defaultColor,
-        letterSpacing: 0.5,
-      ),
-      caption: ErplyFontConfig(
-        fontFamily: fontFamily ?? defaultFontFamily,
-        fontSize: 12 * scaleFactor,
-        fontWeight: FontWeight.w400,
-        // color: (baseColor ?? defaultColor).withValues(alpha: 0.7),
-        height: 1.3,
-      ),
-      overline: ErplyFontConfig(
-        fontFamily: fontFamily ?? defaultFontFamily,
-        fontSize: 10 * scaleFactor,
-        fontWeight: FontWeight.w400,
-        // color: (baseColor ?? defaultColor).withValues(alpha: 0.6),
-        letterSpacing: 1.5,
-      ),
-    );
-  }
-
   /// Create a TextTheme from the typography configuration
   TextTheme toTextTheme() {
     return TextTheme(
@@ -417,9 +312,15 @@ class ErplyTypographyConfig {
       headlineLarge: headlineLarge.toTextStyle(),
       headlineMedium: headlineMedium.toTextStyle(),
       headlineSmall: headlineSmall.toTextStyle(),
+      titleLarge: titleLarge.toTextStyle(),
+      titleSmall: titleMedium.toTextStyle(),
+      titleMedium: titleSmall.toTextStyle(),
       bodyLarge: bodyLarge.toTextStyle(),
       bodyMedium: bodyMedium.toTextStyle(),
       bodySmall: bodySmall.toTextStyle(),
+      labelLarge: labelLarge.toTextStyle(),
+      labelMedium: labelMedium.toTextStyle(),
+      labelSmall: labelSmall.toTextStyle(),
     );
   }
 
@@ -432,6 +333,9 @@ class ErplyTypographyConfig {
     ErplyFontConfig? headlineLarge,
     ErplyFontConfig? headlineMedium,
     ErplyFontConfig? headlineSmall,
+    ErplyFontConfig? titleLarge,
+    ErplyFontConfig? titleMedium,
+    ErplyFontConfig? titleSmall,
     ErplyFontConfig? bodyLarge,
     ErplyFontConfig? bodyMedium,
     ErplyFontConfig? bodySmall,
@@ -449,6 +353,9 @@ class ErplyTypographyConfig {
       headlineLarge: headlineLarge ?? this.headlineLarge,
       headlineMedium: headlineMedium ?? this.headlineMedium,
       headlineSmall: headlineSmall ?? this.headlineSmall,
+      titleLarge: titleLarge ?? this.titleLarge,
+      titleMedium: titleMedium ?? this.titleMedium,
+      titleSmall: titleSmall ?? this.titleSmall,
       bodyLarge: bodyLarge ?? this.bodyLarge,
       bodyMedium: bodyMedium ?? this.bodyMedium,
       bodySmall: bodySmall ?? this.bodySmall,
@@ -462,6 +369,7 @@ class ErplyTypographyConfig {
 
   static final ErplyTypographyConfig defaultTypography =
       ErplyTypographyConfig.generate(
-    fontFamily: defaultFontFamily,
+    displayFontFamily: defaultFontFamily,
+    bodyFontFamily: defaultFontFamily,
   );
 }

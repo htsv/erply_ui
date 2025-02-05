@@ -31,6 +31,7 @@ final appThemeData = ErplyThemeData(
     background: Colors.black,
   ),
   typographyConfig: ErplyTypographyConfig.generate(
-    fontFamily: 'Roboto',
+    displayFontFamily: 'Roboto',
+    bodyFontFamily: 'Roboto',
   ),
 );
